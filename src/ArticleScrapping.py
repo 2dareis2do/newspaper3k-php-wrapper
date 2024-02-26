@@ -13,7 +13,10 @@ url = functionName = sys.argv[1]
 article = Article(url)
 article.download() #Downloads the link’s HTML content
 article.parse() #Parse the article
-#nltk.download('all')#1 time download of the sentence tokenizer
+# 1 time download of the sentence tokenizer
+# perhaps better to run from command line as we don't need to install each time?
+#nltk.download('all') 
+#nltk.download('punkt')
 article.nlp()#  Keyword extraction wrapper
 
 sys.stdout = sys.__stdout__

@@ -1,16 +1,15 @@
 {
-  "name": "mehrdad-dadkhah/article-scrapping-php-wrapper",
-  "description": "Simple php wrapper on Newspaper3k Article scraping & curation",
+  "name": "2dareis2do/newspaper3k-php-wrapper",
+  "description": "PHP wrapper for Newspaper3k Article scraping & curation",
   "keywords": [
-    "scrapp",
+    "scrape",
     "Newspaper3k",
     "article",
     "news",
     "language",
-    "persian",
     "natural-processing"
   ],
-  "homepage": "https://github.com/Mehrdad-Dadkhah/article-scrapping-php-wrapper",
+  "homepage": "https://github.com/2dareis2do/newspaper3k-php-wrapper/tree/article-scrapping-php-wrapper",
   "type": "library",
   "require": {
     "php": ">=7.0",
@@ -22,6 +21,10 @@
     {
       "name": "Mehrdad Dadkhah",
       "email": "dadkhah.ir@gmail.com"
+    },
+    {
+      "name": "Daniel Lobo",
+      "email": "info@danlobo.co.uk"
     }
   ],
   "autoload": {

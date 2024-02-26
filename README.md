@@ -1,4 +1,4 @@
-# article-scrapping-php-wrapper
+# Newspaper3k PHP Wrapper
 
 Simple php wrapper on Newspaper3k Article scraping &amp; curation
 
@@ -135,11 +135,25 @@ NOTE: You will still most likely need to install the following libraries via you
 composer require mehrdad-dadkhah/article-scrapping-php-wrapper
 ```
 
-```
-python:
+## 1 time download of the sentence tokenizer
+After installing the NLTK package, please do install the necessary 
+datasets/models for specific functions to work.
 
-import nltk
-nltk.download('all')
+In particular you will need the Punkt Sentence Tokenizer.
+https://www.nltk.org/api/nltk.tokenize.punkt.html
+
+e.g.
+```
+$ python
+```
+loads python interpreter:
+```
+>>> import nltk
+>>> nltk.download('all')
+```
+or
+```
+>>> nltk.download('punkt')
 ```
 
 ## Usage
@@ -159,5 +173,3 @@ $parser->scrapp('your url');
 (nltk)[http://www.nltk.org/install.html]
 
 (Scrape & Summarize News Articles Using Python)[https://medium.com/@randerson112358/scrape-summarize-news-articles-using-python-51a48af1b4e2]
-
-(Corpora Iranian Persian)[https://wortschatz.uni-leipzig.de/en/download/iranian-persian]
