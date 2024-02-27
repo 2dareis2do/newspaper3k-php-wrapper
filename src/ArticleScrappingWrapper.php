@@ -5,7 +5,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 /**
- * PHP wrapper for python newspaper3k text processor.
+ * PHP wrapper for python3 Newsletter3k.
  */
 class ArticleScrappingWrapper
 {
@@ -13,10 +13,11 @@ class ArticleScrappingWrapper
      * Accepts url string and returns Article object as an associative array.
      * 
      * @param string $url
+     * @param boolean $debug
      * 
      * @return array|object
      */
-    public function scrapp(string $url)
+    public function scrape(string $url, $debug = FALSE)
     {
         $command = 'python3';
         $executable = dirname(__FILE__) . '/ArticleScrapping.py';
@@ -30,6 +31,19 @@ class ArticleScrappingWrapper
             throw new ProcessFailedException($process);
         }
 
-        return json_decode($process->getOutput(), true);
+        $json = $process->getOutput();
+
+        if($debug) {
+            $this->debug($url, $json);
+        }
+
+        // Encode json to associative array
+        return json_decode($json, true);
+    }
+
+    public function debug(string $url, string $json) {
+        $path = parse_url($url, PHP_URL_HOST); 
+        // Generate json file
+        file_put_contents("/tmp/test". $path .".json", $json);
     }
 }
