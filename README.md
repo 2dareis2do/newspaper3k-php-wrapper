@@ -159,7 +159,7 @@ or
 ## Usage
 
 ```PHP
-use Twodareis2do\Scape\Newspaper3kWrapper;
+use Twodareis2do\Scrape\Newspaper3kWrapper;
 
 $parser = new Newspaper3kWrapper();
 
