@@ -1,13 +1,13 @@
 <?php
-namespace MehrdadDadkhah\Scrapp;
+namespace Twodareis2do\Scrape;
 
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 
 /**
- * PHP wrapper for python3 Newsletter3k.
+ * PHP wrapper for python newspaper3k text processor.
  */
-class ArticleScrappingWrapper
+class Newspaper3kWrapper
 {
     /**
      * Accepts url string and returns Article object as an associative array.
@@ -20,7 +20,7 @@ class ArticleScrappingWrapper
     public function scrape(string $url, $debug = FALSE)
     {
         $command = 'python3';
-        $executable = dirname(__FILE__) . '/ArticleScrapping.py';
+        $executable = dirname(__FILE__) . '/ArticleScraping.py';
 
         $commands = [$command, $executable, $url];
 

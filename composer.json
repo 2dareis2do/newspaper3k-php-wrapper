@@ -9,7 +9,7 @@
     "language",
     "natural-processing"
   ],
-  "homepage": "https://github.com/2dareis2do/newspaper3k-php-wrapper/tree/article-scrapping-php-wrapper",
+  "homepage": "https://github.com/2dareis2do/newspaper3k-php-wrapper",
   "type": "library",
   "require": {
     "php": ">=7.0",
@@ -29,7 +29,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "MehrdadDadkhah\\Scrapp\\": "src/"
+      "Twodareis2do\\Scrape\\": "src/"
     }
   }
 }

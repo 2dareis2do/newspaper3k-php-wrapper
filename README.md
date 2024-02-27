@@ -3,7 +3,7 @@
 Simple php wrapper on Newspaper3k Article scraping &amp; curation
 
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat-square)](LICENSE)
-[![Packagist Version](https://img.shields.io/packagist/v/Mehrdad-Dadkhah/article-scrapping-php-wrapper.svg?style=flat-square)](https://packagist.org/packages/Mehrdad-Dadkhah/ArticleScrappingPhpWrapper)
+[![Packagist Version](https://img.shields.io/packagist/v/Mehrdad-Dadkhah/article-scrapping-php-wrapper.svg?style=flat-square)](https://packagist.org/packages/2dareis2do/newspaper3k-php-wrapper)
 
 ## Features
 
@@ -132,7 +132,7 @@ NOTE: You will still most likely need to install the following libraries via you
 ## Installation
 
 ```
-composer require mehrdad-dadkhah/article-scrapping-php-wrapper
+composer require 2dareis2do/newspaper3k-php-wrapper
 ```
 
 ## 1 time download of the sentence tokenizer
@@ -159,11 +159,11 @@ or
 ## Usage
 
 ```PHP
-use MehrdadDadkhah\Scrapp\ArticleScrappingWrapper;
+use Twodareis2do\Scape\Newspaper3kWrapper;
 
-$parser = new ArticleScrappingWrapper();
+$parser = new Newspaper3kWrapper();
 
-$parser->scrapp('your url');
+$parser->scrape('your url');
 ```
 
 ## Read more
