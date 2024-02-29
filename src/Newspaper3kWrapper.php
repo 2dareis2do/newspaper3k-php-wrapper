@@ -42,8 +42,9 @@ class Newspaper3kWrapper
     }
 
     public function debug(string $url, string $json) {
-        $path = parse_url($url, PHP_URL_HOST); 
-        // Generate json file
-        file_put_contents("/tmp/test". $path .".json", $json);
+        $host = parse_url($url, PHP_URL_HOST); 
+        // Generate json file.
+        $milliseconds = floor(microtime(true) * 1000);
+        file_put_contents("/tmp/debug_" . $host . "_" . $milliseconds . ".json", $json);
     }
 }
