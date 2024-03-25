@@ -1,9 +1,9 @@
 # Newspaper3k PHP Wrapper
 
-Simple php wrapper on Newspaper3k Article scraping &amp; curation
+Simple php wrapper for Newspaper3k / Newspaper4k Article scraping and curation.
 
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat-square)](LICENSE)
-[![Packagist Version](https://img.shields.io/packagist/v/Mehrdad-Dadkhah/article-scrapping-php-wrapper.svg?style=flat-square)](https://packagist.org/packages/2dareis2do/newspaper3k-php-wrapper)
+[![Packagist Version](https://img.shields.io/packagist/v/2dareis2do/newspaper3k-php-wrapper.svg?style=flat-square)](https://packagist.org/packages/2dareis2do/newspaper3k-php-wrapper)
 
 ## Features
 
