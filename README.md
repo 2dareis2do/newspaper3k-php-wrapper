@@ -5,7 +5,10 @@ Simple php wrapper for Newspaper3/4k Article scraping and curation.
 Now updated to add support for changing the current working directory, enabling
 you to customise your curation script per job.
 
-Here is an example that utilises a Playwright wrapper:
+## Customising ArticleScraping.py
+
+Here is an custom example of ArticleScraping.py that utilises a Playwright
+wrapper:
 
 ```
 #!/usr/bin/python
@@ -78,14 +81,18 @@ for i in data:
 print(json.dumps(data))
 ```
 
-In this example we simply pass the current working directory to the
-Newspaper3kWrapper. e.g.
+## Using Newspaper3kWrapper
+
+In this shortened example we simply pass the current working directory
+to the Newspaper3kWrapper.
 
 ```
+  use Twodareis2do\Scrape\Newspaper3kWrapper;
+
       try {
 
         // initiate the parser
-        $this->parser = new NewspaperPlaywrightWrapper();
+        $this->parser = new Newspaper3kWrapper();
 
         // If no $cwd then use default 'ArticleScraping.py'
         if (isset($cwd)) {
