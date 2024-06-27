@@ -17,7 +17,7 @@ class Newspaper3kWrapper
      * 
      * @return array|object
      */
-    public function scrape(string $url, $debug = FALSE)
+    public function scrape(string $url, $debug = FALSE , $cwd = null)
     {
         $command = 'python3';
         $executable = dirname(__FILE__) . '/ArticleScraping.py';
