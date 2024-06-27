@@ -78,6 +78,41 @@ for i in data:
 print(json.dumps(data))
 ```
 
+In this example we simply pass the current working directory to the
+Newspaper3kWrapper. e.g.
+
+```
+      try {
+
+        // initiate the parser
+        $this->parser = new NewspaperPlaywrightWrapper();
+
+        // If no $cwd then use default 'ArticleScraping.py'
+        if (isset($cwd)) {
+          $output = $this->parser->scrape($value, $debug, $cwd);
+        }
+        else {
+          $output = $this->parser->scrape($value, $debug);
+        }
+        // return any scraped output
+        return $output;
+
+      }
+      catch (\Exception $e) {
+
+        // Logs a notice to channel if we get http error response.
+        $this->logger->notice('Newspaper Playwright Failed to get (1) URL @url "@error". @code', [
+          '@url' => $value,
+          '@error' => $e->getMessage(),
+          '@code' => $e->getCode(),
+        ]);
+
+        // return empty string
+        return '';
+      }
+      
+```
+
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat-square)](LICENSE)
 [![Packagist Version](https://img.shields.io/packagist/v/2dareis2do/newspaper3k-php-wrapper.svg?style=flat-square)](https://packagist.org/packages/2dareis2do/newspaper3k-php-wrapper)
 
