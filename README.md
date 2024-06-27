@@ -1,6 +1,9 @@
 # Newspaper3k PHP Wrapper
 
-Simple php wrapper for Newspaper3k / Newspaper4k Article scraping and curation.
+Simple php wrapper for Newspaper3/4k Article scraping and curation.
+
+Now updated to add support for changing the current working drirectory, enabling
+you to customise your curation script per job.
 
 [![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat-square)](LICENSE)
 [![Packagist Version](https://img.shields.io/packagist/v/2dareis2do/newspaper3k-php-wrapper.svg?style=flat-square)](https://packagist.org/packages/2dareis2do/newspaper3k-php-wrapper)
@@ -18,8 +21,7 @@ Simple php wrapper for Newspaper3k / Newspaper4k Article scraping and curation.
 - Google trending terms extraction
 - Works in 10+ languages (English, Chinese, German, Arabic, ...)
 
-.. code-block:: pycon
-
+```
     >>> import newspaper
     >>> newspaper.languages()
 
@@ -64,6 +66,7 @@ Simple php wrapper for Newspaper3k / Newspaper4k Article scraping and curation.
       uk              Ukrainian
       vi              Vietnamese
       zh              Chinese
+```
 
 ## Get it now
 
