@@ -1,5 +1,8 @@
 # Newspaper3k PHP Wrapper
 
+[![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat-square)](LICENSE)
+[![Packagist Version](https://img.shields.io/packagist/v/2dareis2do/newspaper3k-php-wrapper.svg?style=flat-square)](https://packagist.org/packages/2dareis2do/newspaper3k-php-wrapper)
+
 Simple php wrapper for Newspaper3/4k Article scraping and curation.
 
 Now updated to add support for changing the current working directory, enabling
@@ -120,8 +123,72 @@ to the Newspaper3kWrapper.
       
 ```
 
-[![Software License](https://img.shields.io/badge/license-GPL-brightgreen.svg?style=flat-square)](LICENSE)
-[![Packagist Version](https://img.shields.io/packagist/v/2dareis2do/newspaper3k-php-wrapper.svg?style=flat-square)](https://packagist.org/packages/2dareis2do/newspaper3k-php-wrapper)
+## Alternative Article Scraping Script
+
+The path to `ArticleScraping.py` can be changed by passing the cwd. Here is an example that uses the Cloudscraper library. 
+
+```
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
+import json, sys, os
+import nltk
+from newspaper import Article
+from newspaper import Config
+from newspaper.article import ArticleException, ArticleDownloadState
+from datetime import datetime
+import lxml, lxml.html
+import cloudscraper
+
+browser={
+    'browser': 'chrome',
+    'platform': 'android',
+    'desktop': False
+}
+
+scraper = cloudscraper.create_scraper(browser)  # returns a CloudScraper instance
+
+sys.stdout = open(os.devnull, "w") #To prevent a function from printing in the batch console in Python
+
+url = functionName = sys.argv[1]
+
+scraped = scraper.get(url).text
+
+article = Article('')
+article.html = scraped
+
+ds = article.download_state
+
+if ds == ArticleDownloadState.SUCCESS:
+    article.parse() #Parse the article
+    # 1 time download of the sentence tokenizer
+    # perhaps better to run from command line as we don't need to install each time?
+    #nltk.download('all') 
+    #nltk.download('punkt')
+    article.nlp()#  Keyword extraction wrapper
+
+    sys.stdout = sys.__stdout__
+
+    data = article.__dict__
+    del data['config']
+    del data['extractor']
+
+    for i in data:
+        if type(data[i]) is set:
+            data[i] = list(data[i])
+        if type(data[i]) is datetime:
+            data[i] = data[i].strftime("%Y-%m-%d %H:%M:%S")
+        if type(data[i]) is lxml.html.HtmlElement:
+            data[i] = lxml.html.tostring(data[i])
+        if type(data[i]) is bytes:
+            data[i] = str(data[i])
+
+    print(json.dumps(data))
+
+elif ds == ArticleDownloadState.FAILED_RESPONSE:
+    pass
+```
+
 
 ## Features
 
@@ -257,8 +324,7 @@ composer require 2dareis2do/newspaper3k-php-wrapper
 After installing the NLTK package, please do install the necessary 
 datasets/models for specific functions to work.
 
-In particular you will need the Punkt Sentence Tokenizer.
-https://www.nltk.org/api/nltk.tokenize.punkt.html
+In particular you will need the [Punkt Sentence Tokenizer](https://www.nltk.org/api/nltk.tokenize.punkt.html).
 
 e.g.
 ```
@@ -286,8 +352,8 @@ $parser->scrape('your url');
 
 ## Read more
 
-(Newspaper)[https://github.com/codelucas/newspaper]
+[Newspaper](https://github.com/codelucas/newspaper)
 
-(nltk)[http://www.nltk.org/install.html]
+[nltk](http://www.nltk.org/install.html)
 
-(Scrape & Summarize News Articles Using Python)[https://medium.com/@randerson112358/scrape-summarize-news-articles-using-python-51a48af1b4e2]
+[Scrape & Summarize News Articles Using Python](https://medium.com/@randerson112358/scrape-summarize-news-articles-using-python-51a48af1b4e2)
