@@ -14,12 +14,13 @@ class Newspaper3kWrapper
      * 
      * @param string $url
      * @param boolean $debug
+     * @param string $cwd
+     * @param string $command
      * 
      * @return array|object
      */
-    public function scrape(string $url, $debug = FALSE , $cwd = null)
+    public function scrape(string $url, $debug = FALSE, string $cwd = null, string $command = 'python')
     {
-        $command = 'python3';
         if (isset($cwd)) {
             $executable = $cwd . '/ArticleScraping.py';
         } else {

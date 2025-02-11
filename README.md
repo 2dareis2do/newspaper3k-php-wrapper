@@ -8,10 +8,17 @@ Simple php wrapper for Newspaper3/4k Article scraping and curation.
 Now updated to add support for changing the current working directory, enabling
 you to customise your curation script per job.
 
+## Update
+2.1.0 introduces an additional parameter for a client to pass command parameter.
+This is useful where multiple versions of python (with respective dependencies)
+may be available on a single server. If no value is passed, it will default to
+the use the default python string.
+
 ## Customising ArticleScraping.py
 
-Here is an custom example of ArticleScraping.py that utilises a Playwright
-wrapper:
+This script is designed to use a modified version of the ArticleScraping script.
+e.g. Here is an custom example of ArticleScraping.py that utilises a Playwright
+wrapper. This can be utilised by passing the cwd parameter:
 
 ```
 #!/usr/bin/python
@@ -188,8 +195,6 @@ if ds == ArticleDownloadState.SUCCESS:
 elif ds == ArticleDownloadState.FAILED_RESPONSE:
     pass
 ```
-
-
 ## Features
 
 - Multi-threaded article download framework
@@ -250,7 +255,7 @@ elif ds == ArticleDownloadState.FAILED_RESPONSE:
       zh              Chinese
 ```
 
-## Get it now
+## Install dependencies
 
 Run ✅ `pip3 install newspaper3k` ✅
 
@@ -302,7 +307,8 @@ NOTE: If you find problem installing `libpng12-dev`, try installing `libpng-dev`
 
 **Otherwise**, install with the following:
 
-NOTE: You will still most likely need to install the following libraries via your package manager
+NOTE: You will still most likely need to install the following libraries via
+your package manager
 
 - PIL: `libjpeg-dev` `zlib1g-dev` `libpng12-dev`
 - lxml: `libxml2-dev` `libxslt-dev`
@@ -313,6 +319,50 @@ NOTE: You will still most likely need to install the following libraries via you
     $ pip3 install newspaper3k
 
     $ curl https://raw.githubusercontent.com/codelucas/newspaper/master/download_corpora.py | python3
+
+### Install on venv
+
+> The venv module supports creating lightweight “virtual environments”, each with their own independent set of Python packages installed in their site directories. A virtual environment is created on top of an existing Python installation, known as the virtual environment’s “base” Python, and may optionally be isolated from the packages in the base environment, so only those explicitly installed in the virtual environment are available. [Python](https://docs.python.org/3/library/venv.html)
+
+also,
+
+> A common directory location for a virtual environment is .venv. This name keeps the directory typically hidden in your shell and thus out of the way while giving it a name that explains why the directory exists. It also prevents clashing with .env environment variable definition files that some tooling supports.
+
+Bearing this in mind here this is the recommended way to install your
+dependencies:
+
+1. Decide where you want to set up you venv. You can use the following syntax:
+`python -m venv /path/to/new/virtual/.venv`
+
+2. Activate your .venv in your current session. e.g.
+`source /path/to/new/virtual/.venv/bin/activate`
+
+3. The first time you set up your script you will likely need to download and
+install any necessary dependencies. You can use pip to help with this form your
+Virtual session. Once you have installed your dependencies, you can export a
+list to use for subsequent installs e.g.
+`python -m pip freeze > /path/to/requirements.txt`
+
+4. Exit your virtual environment. e.g.
+`deactivate`
+
+### Subsequent installs
+
+The next time you have to set up your dependencies, you can now start using
+pip to install them automatically. e.g.
+`python -m pip install -r /path/to/requirements.txt`
+
+## Running on the server
+
+Chances are you server does not run a virtual environment session. However,
+we can still specify the path to python in our newly created virtual environment folder and python will automatically load your installed
+dependencies (unlike the global server version). e.g. We can pass the absolute
+path to the version of python we want to use by passing the following $command
+parameter:
+`/path/to/python/.venv/bin/python`
+
+If we do not a path for $command, it will default to use the globally
+installed verion of `python`.
 
 ## Installation
 
