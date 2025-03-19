@@ -12,7 +12,8 @@ you to customise your curation script per job.
 2.1.0 introduces an additional parameter for a client to pass command parameter.
 This is useful where multiple versions of python (with respective dependencies)
 may be available on a single server. If no value is passed, it will default to
-the use the default python string.
+the use the default python string. This supports both absolute or relative
+paths.
 
 ## Customising ArticleScraping.py
 
@@ -331,13 +332,22 @@ also,
 Bearing this in mind here this is the recommended way to install your
 dependencies:
 
-1. Decide where you want to set up you venv. You can use the following syntax:
+1. If installing for the first time you may need to make sure pip is enabled.
+On ubuntu 22.x first update apt e.g. `apt update` then install 
+`apt install python3-pip`
+
+2. If installing for the first time you may also need to make sure venv is 
+available. On ubuntu 22.x it can be downloaded like so
+`apt install python3-venv`
+
+3. Decide where you want to set up you venv. This can be somehwere on your
+virtual host. You can use the following syntax:
 `python -m venv /path/to/new/virtual/.venv`
 
-2. Activate your .venv in your current session. e.g.
+4. Activate your .venv in your current session. e.g.
 `source /path/to/new/virtual/.venv/bin/activate`
 
-3. The first time you set up your script you will likely need to download and
+5. The first time you set up your script you will likely need to download and
 install any necessary dependencies. You can use pip to help with this form your
 Virtual session. Once you have installed your dependencies, you can export a
 list to use for subsequent installs e.g.
@@ -354,12 +364,15 @@ pip to install them automatically. e.g.
 
 ## Running on the server
 
-Chances are you server does not run a virtual environment session. However,
-we can still specify the path to python in our newly created virtual environment folder and python will automatically load your installed
-dependencies (unlike the global server version). e.g. We can pass the absolute
-path to the version of python we want to use by passing the following $command
-parameter:
+Chances are you web server does not run a virtual environment session. However,
+we can still specify the path to python in our newly created virtual environment
+folder and python will automatically load your installed dependencies (unlike
+the global server version). e.g. We can pass the absolute path to the version of
+python we want to use by passing the following $command parameter:
 `/path/to/python/.venv/bin/python`
+
+This can also be passed relatively which can be more robust across different
+environments. e.g. `../relative/path/to/python/.venv/bin/python`
 
 If we do not a path for $command, it will default to use the globally
 installed verion of `python`.
@@ -389,6 +402,8 @@ or
 ```
 >>> nltk.download('punkt')
 ```
+Note that 'all' would be a few gigabytes so bear this in mind (Installing can
+quickly eat up any root partition disk space).
 
 ## Usage
 
